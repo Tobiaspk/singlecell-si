@@ -32,7 +32,7 @@
     article p:last-child { margin-bottom:0; }
     footer { border-top:1px solid var(--line); padding-top:18px; display:flex; align-items:center; justify-content:space-between; gap:20px; font-size:14px; color:var(--muted); }
     footer p { margin:0; }
-    .profiles { display:flex; gap:24px; }
+    .profiles { display:flex; flex-wrap:wrap; gap:12px 24px; }
     @media (min-width:1000px) and (max-height:800px) { .page { padding-top:22px; padding-bottom:20px; } main { padding:24px 0; } h1 { font-size:58px; margin-bottom:12px; } .tagline { font-size:27px; margin-bottom:16px; } .topics { margin-top:25px; padding-top:20px; } h2 { font-size:26px; margin-bottom:12px; } }
     @media (max-width:760px) { .page { padding:23px 25px; } header { align-items:baseline; gap:14px; } .note { text-align:right; font-size:13px; } main { padding:52px 0 38px; } h1 { letter-spacing:-1.8px; max-width:550px; } .intro-copy { font-size:16px; } .topics { grid-template-columns:1fr; gap:30px; margin-top:32px; } article+article { border-top:1px solid var(--line); padding-top:28px; } h2 { font-size:28px; } footer { align-items:flex-start; flex-direction:column; gap:15px; } }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
@@ -84,7 +84,7 @@
     </main>
     <footer id="people">
       <p>From researchers, for researchers.</p>
-      <div class="profiles" aria-label="GitHub links"><a href="https://github.com/Tobiaspk">Tobias on GitHub</a><a href="https://github.com/Tobiaspk/singlecell-si">Source</a></div>
+      <div class="profiles" aria-label="GitHub links"><a href="https://github.com/Tobiaspk">Tobias on GitHub</a><span>Hussen on GitHub</span><a href="https://github.com/Tobiaspk/singlecell-si">Source</a></div>
     </footer>
   </div>
 </body>
