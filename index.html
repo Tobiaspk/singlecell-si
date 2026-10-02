@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#184b3d">
+  <meta name="description" content="Notes and work on hosting complex biological models and making AI-driven research easier to reproduce.">
+  <title>Singlecell Super Intelligence</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23184b3d'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia' font-size='36' fill='%23f8faf5'%3Es%3C/text%3E%3C/svg%3E">
+  <style>
+    :root { color-scheme: light; --paper:#f8faf5; --ink:#184b3d; --body:#465c50; --muted:#607467; --line:#d9e2d8; --accent:#a45c43; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial,Helvetica,sans-serif; -webkit-font-smoothing:antialiased; }
+    .background { position:fixed; inset:0; width:100%; height:100%; z-index:-1; pointer-events:none; }
+    .page { max-width:1320px; min-height:100svh; margin:auto; padding:30px 64px 24px; display:flex; flex-direction:column; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .monogram { font-family:Georgia,serif; font-size:23px; letter-spacing:-.7px; white-space:nowrap; }
+    .note { margin:0; color:var(--muted); font-size:14px; line-height:1.6; }
+    a { color:inherit; text-decoration-thickness:1px; text-underline-offset:4px; }
+    a:hover { color:var(--accent); }
+    a:focus-visible { outline:2px solid var(--accent); outline-offset:6px; border-radius:2px; }
+    main { flex:1; display:flex; flex-direction:column; justify-content:center; padding:42px 0 38px; }
+    .intro { max-width:970px; }
+    h1 { margin:0 0 18px; font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:clamp(44px,5.25vw,72px); line-height:1.04; letter-spacing:-2.8px; }
+    .tagline { font-family:Georgia,'Times New Roman',serif; font-style:italic; font-size:clamp(24px,2.45vw,32px); line-height:1.3; margin:0 0 23px; color:#477457; }
+    .intro-copy { max-width:780px; color:var(--body); font-size:17px; line-height:1.65; margin:0; }
+    .topics { display:grid; grid-template-columns:1fr 1fr; gap:54px; border-top:1px solid var(--line); margin-top:38px; padding-top:26px; }
+    .eyebrow { color:var(--accent); font-size:12px; text-transform:uppercase; letter-spacing:1.7px; display:block; margin-bottom:12px; }
+    h2 { font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:28px; line-height:1.2; letter-spacing:-.5px; margin:0 0 17px; max-width:420px; }
+    article p { color:var(--body); font-size:16px; line-height:1.6; margin:0 0 13px; }
+    article p:last-child { margin-bottom:0; }
+    footer { border-top:1px solid var(--line); padding-top:18px; display:flex; align-items:center; justify-content:space-between; gap:20px; font-size:14px; color:var(--muted); }
+    footer p { margin:0; }
+    .profiles { display:flex; gap:24px; }
+    @media (min-width:1000px) and (max-height:800px) { .page { padding-top:22px; padding-bottom:20px; } main { padding:24px 0; } h1 { font-size:58px; margin-bottom:12px; } .tagline { font-size:27px; margin-bottom:16px; } .topics { margin-top:25px; padding-top:20px; } h2 { font-size:26px; margin-bottom:12px; } }
+    @media (max-width:760px) { .page { padding:23px 25px; } header { align-items:baseline; gap:14px; } .note { text-align:right; font-size:13px; } main { padding:52px 0 38px; } h1 { letter-spacing:-1.8px; max-width:550px; } .intro-copy { font-size:16px; } .topics { grid-template-columns:1fr; gap:30px; margin-top:32px; } article+article { border-top:1px solid var(--line); padding-top:28px; } h2 { font-size:28px; } footer { align-items:flex-start; flex-direction:column; gap:15px; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+  </style>
+</head>
+<body>
+  <svg class="background" viewBox="0 0 1440 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="wash"><stop stop-color="#9abdab" stop-opacity=".18"/><stop offset="1" stop-color="#f8faf5" stop-opacity="0"/></radialGradient>
+      <linearGradient id="contour" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#548b71" stop-opacity="0"/><stop offset=".65" stop-color="#548b71" stop-opacity=".15"/><stop offset="1" stop-color="#a45c43" stop-opacity=".10"/></linearGradient>
+    </defs>
+    <ellipse cx="1350" cy="240" rx="540" ry="540" fill="url(#wash)"/>
+    <g fill="none" stroke="url(#contour)" stroke-width="1.2">
+      <path d="M750 -150 C690 70 1190 5 1050 290 S1200 555 1540 360"/>
+      <path d="M778 -150 C718 70 1218 5 1078 290 S1228 555 1568 360"/>
+      <path d="M806 -150 C746 70 1246 5 1106 290 S1256 555 1596 360"/>
+      <path d="M834 -150 C774 70 1274 5 1134 290 S1284 555 1624 360"/>
+      <path d="M862 -150 C802 70 1302 5 1162 290 S1312 555 1652 360"/>
+      <path d="M890 -150 C830 70 1330 5 1190 290 S1340 555 1680 360"/>
+      <path d="M918 -150 C858 70 1358 5 1218 290 S1368 555 1708 360"/>
+      <path d="M946 -150 C886 70 1386 5 1246 290 S1396 555 1736 360"/>
+    </g>
+  </svg>
+  <div class="page">
+    <header>
+      <span class="monogram">singlecell-si</span>
+      <p class="note">Just a hobby project. <a href="#people">Let’s talk.</a></p>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="title">
+        <h1 id="title">Singlecell Super Intelligence</h1>
+        <p class="tagline">Complex models. Reproducible science.</p>
+        <p class="intro-copy">AI is changing how we discover and develop methods in biology. As researchers, we see practical gaps in hosting large, complex models and reproducing AI-driven analyses. This is a place to share what we’re learning and building.</p>
+      </section>
+      <div class="topics">
+        <article aria-labelledby="compute-title">
+          <span class="eyebrow">01 / Infrastructure</span>
+          <h2 id="compute-title">GPU infrastructure,<br>when you need it.</h2>
+          <p>In our experience, biological models don’t always fit a simple PyTorch setup. Custom data preparation, loaders, dependencies, and frequent updates can make them difficult to host—especially during development.</p>
+          <p>We’re exploring NVIDIA-native hosted GPU infrastructure on demand, to make complex models easier to build and run, with access to the compute we need, when we need it.</p>
+        </article>
+        <article aria-labelledby="science-title">
+          <span class="eyebrow">02 / Reproducibility</span>
+          <h2 id="science-title">Making results easier<br>to reproduce.</h2>
+          <p>In agentic workflows, the same prompt can lead to different results. As AI takes on more analysis, understanding how a result was produced becomes essential.</p>
+          <p>We want to share ways to make these workflows reproducible: recording decisions and why they were made, preserving environments and versions, and creating notebooks that make results easier to rerun and check.</p>
+        </article>
+      </div>
+    </main>
+    <footer id="people">
+      <p>From researchers, for researchers.</p>
+      <div class="profiles" aria-label="GitHub links"><a href="https://github.com/Tobiaspk">Tobias on GitHub</a><a href="https://github.com/Tobiaspk/singlecell-si">Source</a></div>
+    </footer>
+  </div>
+</body>
+</html>
