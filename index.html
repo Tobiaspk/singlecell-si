@@ -33,6 +33,24 @@
     footer { border-top:1px solid var(--line); padding-top:18px; display:flex; align-items:center; justify-content:space-between; gap:20px; font-size:14px; color:var(--muted); }
     footer p { margin:0; }
     .profiles { display:flex; flex-wrap:wrap; gap:12px 24px; }
+    .contact { border-top:1px solid var(--line); padding:18px 0; }
+    .contact-bar { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:12px 24px; }
+    .contact-bar p { margin:0; color:var(--muted); font-size:14px; }
+    details { width:100%; }
+    summary { cursor:pointer; width:fit-content; font-family:Georgia,serif; font-size:22px; }
+    summary:hover { color:var(--accent); }
+    form { max-width:780px; padding-top:24px; }
+    .fields { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    label { display:block; font-size:14px; line-height:1.5; }
+    label span { color:var(--muted); }
+    input,textarea { display:block; width:100%; margin-top:7px; padding:11px 12px; border:1px solid #a8b9ac; border-radius:5px; background:#ffffffb8; color:var(--ink); font:inherit; font-size:16px; }
+    textarea { min-height:120px; resize:vertical; }
+    .message-field { margin-top:18px; }
+    button { margin-top:18px; padding:12px 22px; border:0; border-radius:5px; background:var(--ink); color:var(--paper); font:inherit; cursor:pointer; }
+    button:hover { background:#28634e; }
+    input:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+    .form-note { font-size:13px; color:var(--muted); line-height:1.5; }
+    @media (max-width:480px) { .fields { grid-template-columns:1fr; } }
     @media (min-width:1000px) and (max-height:800px) { .page { padding-top:22px; padding-bottom:20px; } main { padding:24px 0; } h1 { font-size:58px; margin-bottom:12px; } .tagline { font-size:27px; margin-bottom:16px; } .topics { margin-top:25px; padding-top:20px; } h2 { font-size:26px; margin-bottom:12px; } }
     @media (max-width:760px) { .page { padding:23px 25px; } header { align-items:baseline; gap:14px; } .note { text-align:right; font-size:13px; } main { padding:52px 0 38px; } h1 { letter-spacing:-1.8px; max-width:550px; } .intro-copy { font-size:16px; } .topics { grid-template-columns:1fr; gap:30px; margin-top:32px; } article+article { border-top:1px solid var(--line); padding-top:28px; } h2 { font-size:28px; } footer { align-items:flex-start; flex-direction:column; gap:15px; } }
     @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
@@ -59,7 +77,7 @@
   <div class="page">
     <header>
       <span class="monogram">singlecell-si</span>
-      <p class="note">Just a hobby project. <a href="#people">Let’s talk.</a></p>
+      <p class="note">Just a hobby project. <a href="#contact" id="contact-link">Let’s talk.</a></p>
     </header>
     <main>
       <section class="intro" aria-labelledby="title">
@@ -82,10 +100,38 @@
         </article>
       </div>
     </main>
+    <section class="contact" aria-label="Contact">
+      <div class="contact-bar">
+        <p>Let’s talk. Write a message below or email <a href="mailto:tobiaspk1@gmail.com">tobiaspk1@gmail.com</a>.</p>
+        <details id="contact">
+          <summary>Send a message</summary>
+          <form action="https://formsubmit.co/tobiaspk1@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Message from singlecell.si">
+            <div class="fields">
+              <label for="contact-name">Name <span>(required)</span><input id="contact-name" name="name" autocomplete="name" maxlength="200" required></label>
+              <label for="contact-organisation">Organisation <span>(optional)</span><input id="contact-organisation" name="organisation" autocomplete="organization" maxlength="200"></label>
+              <label for="contact-email">Email <span>(optional, if you’d like a reply)</span><input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254"></label>
+            </div>
+            <label class="message-field" for="contact-message">Message <span>(required)</span><textarea id="contact-message" name="message" maxlength="10000" required></textarea></label>
+            <button type="submit">Send message</button>
+            <p class="form-note">Sent to Tobias through <a href="https://formsubmit.co/">FormSubmit</a>. You’ll continue there to complete submission.</p>
+          </form>
+        </details>
+      </div>
+    </section>
     <footer id="people">
       <p>From researchers, for researchers.</p>
       <div class="profiles" aria-label="GitHub links"><a href="https://github.com/Tobiaspk">Tobias on GitHub</a><span>Hussen on GitHub</span><a href="https://github.com/Tobiaspk/singlecell-si">Source</a></div>
     </footer>
   </div>
+  <script>
+    const contact = document.getElementById('contact');
+    function revealContact() {
+      if (location.hash === '#contact') contact.open = true;
+    }
+    document.getElementById('contact-link').addEventListener('click', () => { contact.open = true; });
+    window.addEventListener('hashchange', revealContact);
+    revealContact();
+  </script>
 </body>
 </html>
